@@ -2,7 +2,7 @@
 
 from parser import parseTables
 from tables import ChallengeTable
-from output import createHtml
+from output import createHtml, createPdf
 import sys
 
 def parseArgs():
@@ -10,16 +10,17 @@ def parseArgs():
         # "5 3 3 2" => [5, 3, 3, 2]
         return list(map(int, x.strip().split(" ")))
 
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         raise ValueError()
-    type   = sys.argv[1]
+    
+    type = sys.argv[1]
     if type not in { "html", "pdf" }:
         raise ValueError()
 
-    
-    levels = list(map(convertPartyString, sys.argv[2:]))
+    path   = sys.argv[2]
+    levels = list(map(convertPartyString, sys.argv[3:]))
 
-    return type, levels
+    return type, path, levels
 
 
 if __name__ == "__main__":
@@ -34,13 +35,18 @@ if __name__ == "__main__":
 
     print("... outputting HTML challenge table", file=sys.stderr)
 
-    type, levels = parseArgs()
+    type, path, levels = parseArgs()
 
     tables  = list(map(table.compute, levels))
     content = list(zip(levels, tables)) # [ ( <party levels>, <challenge table> ) ]
     html    = createHtml(content)
 
     if type == "html":
-        print(html)
+        print("... writing challenge table as HTML to '{}'".format(path), file=sys.stderr)
+        with open(path, encoding="utf-8", mode="w") as f:
+            f.write(html)
     else:
-        print("PDF not yet implemented", file=sys.stderr)
+        print("... writing challenge table as PDF to '{}'".format(path), file=sys.stderr)
+        createPdf(path, html)
+
+    print("... done", file=sys.stderr)

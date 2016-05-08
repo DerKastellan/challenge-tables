@@ -1,3 +1,5 @@
+import pdfkit
+
 def createHtml(challengeTables):
     def convertRow(index, row):
         row = list(map(lambda x: "<td>{}</td>".format(x), row))
@@ -74,3 +76,8 @@ def createHtml(challengeTables):
     content = "    <br/><br/>\n".join(map(createTable, challengeTables))
 
     return html.format(tables=content, title="Challenge Table")
+
+def createPdf(path, html):
+    options = { "quiet": "" }
+    return pdfkit.from_string(html, path, options=options)
+
