@@ -30,8 +30,6 @@ Currently it works as follows:
 * clone the project
 * change working dir into project
 * `src/create.py html <dest file> "<list individual levels of party members>" "<next list>"`
-* this prints the HTML to stdout, redirect to file if needed
-* all program output that is not data is stderr stream
 
 Example: 
 
