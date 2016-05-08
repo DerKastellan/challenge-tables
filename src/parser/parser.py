@@ -68,4 +68,5 @@ def safeInt(x):
 if __name__ == "__main__":
     thresholds, multipliers= parseTables("http://dnd.wizards.com/products/tabletop/dm-basic-rules")
     print("20 HARD", thresholds.get(20, XpThresholds.HARD))
+    print("ENEMIES 20 {}, 13 {}, 7 {}, 1 {}".format(*map(multipliers.get, [20, 13, 7, 1])))
 
