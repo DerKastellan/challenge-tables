@@ -13,5 +13,5 @@ if __name__ == "__main__":
 
     print("... computing challenge table")
     table = ChallengeTable(thresholds, multipliers)
-    table.compute([1, 1, 1, 1])
+    table.compute([2, 2, 3, 3])
     table.compute([5, 5, 5, 5, 5])

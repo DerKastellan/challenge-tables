@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from tables import XpThresholds, Multipliers
 from lxml import html
 import re
