@@ -8,7 +8,7 @@ import sys
 def parseArgs():
     def convertPartyString(x):
         # "5 3 3 2" => [5, 3, 3, 2]
-        return map(int, x.strip().split(" "))
+        return list(map(int, x.strip().split(" ")))
 
     if len(sys.argv) < 2:
         raise ValueError()
@@ -17,7 +17,7 @@ def parseArgs():
         raise ValueError()
 
     
-    levels = map(convertPartyString, sys.argv[2:])
+    levels = list(map(convertPartyString, sys.argv[2:]))
 
     return type, levels
 
@@ -36,9 +36,8 @@ if __name__ == "__main__":
 
     type, levels = parseArgs()
 
-
     tables = list(map(table.compute, levels))
-    html   = createHtml(tables[0])
+    html   = createHtml(tables)
 
     if type == "html":
         print(html)

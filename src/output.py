@@ -1,11 +1,10 @@
-def createHtml(challengeTable):
+def createHtml(challengeTables):
     def convertRow(index, row):
         row = list(map(lambda x: "<td>{}</td>".format(x), row))
 
-        indent  = "\t\t"
-        rowHead = "{indent}<tr{style}>\n{indent}".format(indent=indent,style=rowStyle(index))
-        rowTail = "\n{indent}</tr>".format(indent=indent)
-        rowSep  = "\n{indent}".format(indent=indent)
+        rowHead = "        <tr{style}>\n            ".format(style=rowStyle(index))
+        rowTail = "\n        </tr>"
+        rowSep  = "\n            "
 
         return rowHead + rowSep.join(row) + rowTail
 
@@ -16,6 +15,25 @@ def createHtml(challengeTable):
         else:
             # odd lines: do nothing
             return "" 
+
+    def createTable(challengeTable):
+        rows    = [ convertRow(index, challengeTable[index]) for index in range(0, len(challengeTable)) ]
+        content = "\n".join(rows)
+
+        table = \
+"""    <table>
+        <caption>Challenge Table</caption>
+        <tr>
+            <th>Number of Enemies</th>
+            <th>Easy</th>
+            <th>Medium</th>
+            <th>Hard</th>
+            <th>Deadly</th>
+        </tr>
+{tableRows}
+    </table>
+"""
+        return table.format(tableRows=content)
 
     html = \
 """<!DOCTYPE html>
@@ -29,22 +47,10 @@ def createHtml(challengeTable):
     </style>
 </head>
 <body>
-    <table>
-        <caption>Challenge Table</caption>
-        <tr>
-        <th>Number of Enemies</th>
-        <th>Easy</th>
-        <th>Medium</th>
-        <th>Hard</th>
-        <th>Deadly</th>
-        </tr>
-{tableRows}
-    </table>
+{tables}
 </body>
 </html>"""
     
+    content = "    <br/><br/>\n".join(map(createTable, challengeTables))
 
-    rows    = [ convertRow(index, challengeTable[index]) for index in range(0, len(challengeTable)) ]
-    content = "\n".join(rows)
-
-    return html.format(tableRows=content, title="Challenge Table")
+    return html.format(tables=content, title="Challenge Table")
