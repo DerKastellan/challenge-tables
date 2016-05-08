@@ -2,6 +2,7 @@
 
 from parser import parseTables
 from tables import ChallengeTable
+from output import createHtml
 
 
 if __name__ == "__main__":
@@ -13,5 +14,6 @@ if __name__ == "__main__":
 
     print("... computing challenge table")
     table = ChallengeTable(thresholds, multipliers)
-    table.compute([2, 2, 3, 3])
-    table.compute([5, 5, 5, 5, 5])
+
+    print(createHtml(table.compute([2, 2, 3, 3])))
+    print(createHtml(table.compute([5, 5, 5, 5, 5])))
