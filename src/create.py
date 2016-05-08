@@ -33,8 +33,6 @@ if __name__ == "__main__":
     print("... computing challenge table", file=sys.stderr)
     table = ChallengeTable(thresholds, multipliers)
 
-    print("... outputting HTML challenge table", file=sys.stderr)
-
     type, path, levels = parseArgs()
 
     tables  = list(map(table.compute, levels))
