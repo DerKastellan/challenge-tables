@@ -36,8 +36,9 @@ if __name__ == "__main__":
 
     type, levels = parseArgs()
 
-    tables = list(map(table.compute, levels))
-    html   = createHtml(tables)
+    tables  = list(map(table.compute, levels))
+    content = list(zip(levels, tables)) # [ ( <party levels>, <challenge table> ) ]
+    html    = createHtml(content)
 
     if type == "html":
         print(html)

@@ -14,15 +14,20 @@ def createHtml(challengeTables):
             return ' bgcolor="silver"'
         else:
             # odd lines: do nothing
-            return "" 
+            return ""
 
-    def createTable(challengeTable):
-        rows    = [ convertRow(index, challengeTable[index]) for index in range(0, len(challengeTable)) ]
-        content = "\n".join(rows)
+    def createDescription(levels):
+        desc = "For a party with individual levels of: " + ", ".join(map(str, levels))
+        return '<td colspan="5">{}</td>'.format(desc)
+    def createTable(entry):
+        levels, challengeTable = entry # unpack tuples
+        rows                   = [ convertRow(index, challengeTable[index]) for index in range(0, len(challengeTable)) ]
+        content                = "\n".join(rows)
 
         table = \
 """    <table>
         <caption>Challenge Table</caption>
+        <tr>{description}</tr>
         <tr>
             <th>Number of Enemies</th>
             <th>Easy</th>
@@ -33,7 +38,7 @@ def createHtml(challengeTables):
 {tableRows}
     </table>
 """
-        return table.format(tableRows=content)
+        return table.format(tableRows=content, description=createDescription(levels))
 
     html = \
 """<!DOCTYPE html>
