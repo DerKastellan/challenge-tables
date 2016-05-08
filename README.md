@@ -37,7 +37,8 @@ Example:
 
 Result:
 
-`<!DOCTYPE html>
+```html
+<!DOCTYPE html>
 <html>
 <head>
     <title>Challenge Table</title>
@@ -101,6 +102,6 @@ Result:
                 </tr>
     </table>
 </body>
-</html>`
+</html>```
 
 
