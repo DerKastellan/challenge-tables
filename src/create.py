@@ -6,14 +6,20 @@ from output import createHtml
 import sys
 
 def parseArgs():
+    def convertPartyString(x):
+        # "5 3 3 2" => [5, 3, 3, 2]
+        return map(int, x.strip().split(" "))
+
     if len(sys.argv) < 2:
         raise ValueError()
     type   = sys.argv[1]
     if type not in { "html", "pdf" }:
         raise ValueError()
 
-    levels = sys.argv[2:]
-    return type, list(map(int, levels))
+    
+    levels = map(convertPartyString, sys.argv[2:])
+
+    return type, levels
 
 
 if __name__ == "__main__":
@@ -29,8 +35,10 @@ if __name__ == "__main__":
     print("... outputting HTML challenge table", file=sys.stderr)
 
     type, levels = parseArgs()
-    table = table.compute(levels)
-    html  = createHtml(table)
+
+
+    tables = list(map(table.compute, levels))
+    html   = createHtml(tables[0])
 
     if type == "html":
         print(html)

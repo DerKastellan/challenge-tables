@@ -33,7 +33,7 @@ Currently it works as follows:
 
 Example: 
 
-* `src/create.py html 5 5 5 5 4` (a party of 4 lv5s and 1 lv 4)
+* `src/create.py html "5 5 5 5 4" ` (a party of 4 lv5s and 1 lv 4)
 
 Result:
 
