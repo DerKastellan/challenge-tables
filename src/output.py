@@ -1,17 +1,36 @@
 def createHtml(challengeTable):
-    def convertRow(row):
+    def convertRow(index, row):
         row = list(map(lambda x: "<td>{}</td>".format(x), row))
-        row = "\t<tr>\n\t" + "\n\t".join(row) + "\n\t</tr>"
-        return row
 
-    html = """
-<!DOCTYPE html>
+        indent  = "\t\t"
+        rowHead = "{indent}<tr{style}>\n{indent}".format(indent=indent,style=rowStyle(index))
+        rowTail = "\n{indent}</tr>".format(indent=indent)
+        rowSep  = "\n{indent}".format(indent=indent)
+
+        return rowHead + rowSep.join(row) + rowTail
+
+    def rowStyle(index):        
+        if index % 2 == 0:
+            # even lines: add silver background
+            return ' bgcolor="silver"'
+        else:
+            # odd lines: do nothing
+            return "" 
+
+    html = \
+"""<!DOCTYPE html>
 <html>
 <head>
     <title>{title}</title>
+    <style>
+        table   {{width: 800px; text-align: center;}}
+        caption {{font-size: xx-large; font-weight: bold;}}
+        th      {{width: 160px;}}
+    </style>
 </head>
 <body>
     <table>
+        <caption>Challenge Table</caption>
         <tr>
         <th>Number of Enemies</th>
         <th>Easy</th>
@@ -24,6 +43,8 @@ def createHtml(challengeTable):
 </body>
 </html>"""
     
-    rows = "\n".join([ convertRow(row) for row in challengeTable ])
 
-    return html.format(tableRows=rows, title="Something")
+    rows    = [ convertRow(index, challengeTable[index]) for index in range(0, len(challengeTable)) ]
+    content = "\n".join(rows)
+
+    return html.format(tableRows=content, title="Challenge Table")
