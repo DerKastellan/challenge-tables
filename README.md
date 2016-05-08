@@ -51,56 +51,58 @@ Result:
 <body>
     <table>
         <caption>Challenge Table</caption>
+        <tr><td colspan="5">For a party with individual levels of: 5, 5, 5, 5, 4</td></tr>
         <tr>
-        <th>Number of Enemies</th>
-        <th>Easy</th>
-        <th>Medium</th>
-        <th>Hard</th>
-        <th>Deadly</th>
+            <th>Number of Enemies</th>
+            <th>Easy</th>
+            <th>Medium</th>
+            <th>Hard</th>
+            <th>Deadly</th>
         </tr>
-                <tr bgcolor="silver">
-                <td>1</td>
-                <td>1125</td>
-                <td>2250</td>
-                <td>3375</td>
-                <td>4900</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>750</td>
-                <td>1500</td>
-                <td>2250</td>
-                <td>3267</td>
-                </tr>
-                <tr bgcolor="silver">
-                <td>3 - 4</td>
-                <td>563</td>
-                <td>1125</td>
-                <td>1688</td>
-                <td>2450</td>
-                </tr>
-                <tr>
-                <td>7 - 8</td>
-                <td>450</td>
-                <td>900</td>
-                <td>1350</td>
-                <td>1960</td>
-                </tr>
-                <tr bgcolor="silver">
-                <td>11 - 12</td>
-                <td>375</td>
-                <td>750</td>
-                <td>1125</td>
-                <td>1634</td>
-                </tr>
-                <tr>
-                <td>15+</td>
-                <td>282</td>
-                <td>563</td>
-                <td>844</td>
-                <td>1225</td>
-                </tr>
+        <tr bgcolor="silver">
+            <td>1</td>
+            <td>1125</td>
+            <td>2250</td>
+            <td>3375</td>
+            <td>4900</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>750</td>
+            <td>1500</td>
+            <td>2250</td>
+            <td>3267</td>
+        </tr>
+        <tr bgcolor="silver">
+            <td>3 - 4</td>
+            <td>563</td>
+            <td>1125</td>
+            <td>1688</td>
+            <td>2450</td>
+        </tr>
+        <tr>
+            <td>7 - 8</td>
+            <td>450</td>
+            <td>900</td>
+            <td>1350</td>
+            <td>1960</td>
+        </tr>
+        <tr bgcolor="silver">
+            <td>11 - 12</td>
+            <td>375</td>
+            <td>750</td>
+            <td>1125</td>
+            <td>1634</td>
+        </tr>
+        <tr>
+            <td>15+</td>
+            <td>282</td>
+            <td>563</td>
+            <td>844</td>
+            <td>1225</td>
+        </tr>
     </table>
+
 </body>
 </html>
 ```
