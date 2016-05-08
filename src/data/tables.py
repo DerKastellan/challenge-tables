@@ -1,4 +1,4 @@
-class XpThreshold:
+class XpThresholds:
 
     EASY   = 0
     MEDIUM = 1
@@ -18,4 +18,8 @@ class XpThreshold:
             raise ValueError()
 
         return self.tables[level-1][challenge]
-        
+
+class Multipliers:
+
+    def __init__(self, table):
+        self.table = table

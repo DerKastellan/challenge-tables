@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
-from data.tables import XpThreshold
-
-
+from data.tables import XpThresholds, Multipliers
 from lxml import html
+import re
 
 
 def parseTables(uri):
     doc = html.parse(uri)
     
     xpThresholds = extractXpThresholdTable(doc)
+    multipliers  = extractMultiplierTable(doc)
 
-    return xpThresholds
+    return xpThresholds, multipliers
 
 
 def findTableElementByCaption(doc, captionText):
@@ -38,7 +38,25 @@ def extractXpThresholdTable(doc):
 
         result.append(columns)
 
-    return XpThreshold(result)
+    return XpThresholds(result)
+
+def extractMultiplierTable(doc):
+    pattern = re.compile("[0-9][0-9]?")
+
+    def containsNumber(x):
+        return pattern.search(x) is not None
+
+    table  = findTableElementByCaption(doc, "Encounter Multipliers")
+    result = []
+
+    text = [ text for text in table.xpath("tbody/tr/td/text()") ]
+    text = list(filter(containsNumber, text)) # filter out invalid
+    labels      = text[0:][::2]
+    multipliers = text[1:][::2]
+
+    result = list(zip(labels, multipliers))
+
+    return Multipliers(result)
 
 def safeInt(x):
     try:
@@ -48,5 +66,6 @@ def safeInt(x):
         return None
 
 if __name__ == "__main__":
-    test = parseTables("http://dnd.wizards.com/products/tabletop/dm-basic-rules")
-    print("20 HARD", test.get(20, XpThreshold.HARD))
+    thresholds, multipliers= parseTables("http://dnd.wizards.com/products/tabletop/dm-basic-rules")
+    print("20 HARD", thresholds.get(20, XpThresholds.HARD))
+
