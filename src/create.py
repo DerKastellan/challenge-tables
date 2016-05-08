@@ -5,6 +5,10 @@ from tables import ChallengeTable
 from output import createHtml
 import sys
 
+def parseArgs():
+    args = sys.argv[1:]
+    return list(map(int, args))
+
 
 if __name__ == "__main__":
     uri = "http://dnd.wizards.com/products/tabletop/dm-basic-rules"
@@ -18,4 +22,7 @@ if __name__ == "__main__":
 
     print("... outputting HTML challenge table", file=sys.stderr)
 
-    print(createHtml(table.compute([2, 2, 3, 3])))
+    levels = parseArgs()
+    table  = table.compute(levels)
+
+    print(createHtml(table))
