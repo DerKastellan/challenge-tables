@@ -33,7 +33,7 @@ Currently it works as follows:
 
 Example: 
 
-* `src/create.py html "5 5 5 5 4" ` (a party of 4 lv5s and 1 lv 4)
+* `src/create.py html "6 6 6 6 5" ` (a party of 4 lv6s and 1 lv 5)
 
 Result:
 
@@ -51,7 +51,7 @@ Result:
 <body>
     <table>
         <caption>Challenge Table</caption>
-        <tr><td colspan="5">For a party with individual levels of: 5, 5, 5, 5, 4</td></tr>
+        <tr><td colspan="5">For a party with individual levels of 1xlv5, 4xlv6</td></tr>
         <tr>
             <th>Number of Enemies</th>
             <th>Easy</th>
@@ -61,45 +61,45 @@ Result:
         </tr>
         <tr bgcolor="silver">
             <td>1</td>
-            <td>1125</td>
-            <td>2250</td>
-            <td>3375</td>
-            <td>4900</td>
+            <td>1450</td>
+            <td>2900</td>
+            <td>4350</td>
+            <td>6700</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>750</td>
-            <td>1500</td>
-            <td>2250</td>
-            <td>3267</td>
+            <td>967</td>
+            <td>1934</td>
+            <td>2900</td>
+            <td>4467</td>
         </tr>
         <tr bgcolor="silver">
             <td>3 - 4</td>
-            <td>563</td>
-            <td>1125</td>
-            <td>1688</td>
-            <td>2450</td>
+            <td>725</td>
+            <td>1450</td>
+            <td>2175</td>
+            <td>3350</td>
         </tr>
         <tr>
             <td>7 - 8</td>
-            <td>450</td>
-            <td>900</td>
-            <td>1350</td>
-            <td>1960</td>
+            <td>580</td>
+            <td>1160</td>
+            <td>1740</td>
+            <td>2680</td>
         </tr>
         <tr bgcolor="silver">
             <td>11 - 12</td>
-            <td>375</td>
-            <td>750</td>
-            <td>1125</td>
-            <td>1634</td>
+            <td>484</td>
+            <td>967</td>
+            <td>1450</td>
+            <td>2234</td>
         </tr>
         <tr>
             <td>15+</td>
-            <td>282</td>
-            <td>563</td>
-            <td>844</td>
-            <td>1225</td>
+            <td>363</td>
+            <td>725</td>
+            <td>1088</td>
+            <td>1675</td>
         </tr>
     </table>
 

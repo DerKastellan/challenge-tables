@@ -17,8 +17,23 @@ def createHtml(challengeTables):
             return ""
 
     def createDescription(levels):
-        desc = "For a party with individual levels of: " + ", ".join(map(str, levels))
+        desc = "For a party with individual levels of " + formatLevels(levels)
         return '<td colspan="5">{}</td>'.format(desc)
+
+    def formatLevelEntry(level, number):
+        return "{}xlv{}".format(number, level)
+
+
+    def formatLevels(levels):
+        def takeCounts(levels):
+            count = {}
+            for x in levels:
+                count[x] = count[x]+1 if x in count else 1
+
+            return [ formatLevelEntry(key, count[key]) for key in sorted(count) ]
+
+        return ", ".join(takeCounts(levels))
+
     def createTable(entry):
         levels, challengeTable = entry # unpack tuples
         rows                   = [ convertRow(index, challengeTable[index]) for index in range(0, len(challengeTable)) ]
