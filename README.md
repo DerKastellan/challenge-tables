@@ -19,7 +19,9 @@ With a challenge table, encounter creation on the fly is easy. The rest is up to
 ## Prerequisites
 
 You need to have installed:
+* python3
 * lxml
+* pdfkit
 
 ## Running it
 
@@ -27,13 +29,13 @@ Currently it works as follows:
 
 * clone the project
 * change working dir into project
-* `src/create.py html "<list individual levels of party members>" "<next list>"`
+* `src/create.py html <dest file> "<list individual levels of party members>" "<next list>"`
 * this prints the HTML to stdout, redirect to file if needed
 * all program output that is not data is stderr stream
 
 Example: 
 
-* `src/create.py html "6 6 6 6 5" ` (a party of 4 lv6s and 1 lv 5)
+* `src/create.py html out.html "6 6 6 6 5" ` (a party of 4 lv6s and 1 lv 5)
 
 Result:
 
