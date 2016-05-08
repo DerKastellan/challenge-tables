@@ -7,18 +7,18 @@ from lxml import html
 
 
 def parseTables(uri):
-    input = html.parse(uri)
+    doc = html.parse(uri)
     
-    xpThresholds = extractXpThresholdTable(input)
+    xpThresholds = extractXpThresholdTable(doc)
 
     return xpThresholds
 
 
-def extractXpThresholdTable(input):
-    def findTable():
-        caption = input.xpath("//caption[text()='XP Thresholds by Character Level']")[0]
-        return caption.getparent()
+def findTableElementByCaption(doc, captionText):
+    caption = doc.xpath("//caption[text()='{}']".format(captionText))[0]
+    return caption.getparent()
 
+def extractXpThresholdTable(doc):
     def safeInt(x):
         try:
             clean = x.strip().replace(",", "")
@@ -26,7 +26,7 @@ def extractXpThresholdTable(input):
         except ValueError:
             return None
         
-    table  = findTable()
+    table  = findTableElementByCaption(doc, "XP Thresholds by Character Level")
     rows   = [ tr for tr in table.xpath("tbody/tr") ]
     result = []
 
