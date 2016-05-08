@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from data.tables import XpThresholds, Multipliers
+from tables import XpThresholds, Multipliers
 from lxml import html
 import re
 
