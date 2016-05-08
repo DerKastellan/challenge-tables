@@ -6,8 +6,14 @@ from output import createHtml
 import sys
 
 def parseArgs():
-    args = sys.argv[1:]
-    return list(map(int, args))
+    if len(sys.argv) < 2:
+        raise ValueError()
+    type   = sys.argv[1]
+    if type not in { "html", "pdf" }:
+        raise ValueError()
+
+    levels = sys.argv[2:]
+    return type, list(map(int, levels))
 
 
 if __name__ == "__main__":
@@ -22,7 +28,11 @@ if __name__ == "__main__":
 
     print("... outputting HTML challenge table", file=sys.stderr)
 
-    levels = parseArgs()
-    table  = table.compute(levels)
+    type, levels = parseArgs()
+    table = table.compute(levels)
+    html  = createHtml(table)
 
-    print(createHtml(table))
+    if type == "html":
+        print(html)
+    else:
+        print("PDF not yet implemented", file=sys.stderr)
