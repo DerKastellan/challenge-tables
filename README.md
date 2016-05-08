@@ -30,6 +30,7 @@ Currently it works as follows:
 * clone the project
 * change working dir into project
 * `src/create.py html <dest file> "<list individual levels of party members>" "<next list>"`
+* available output types are `html` or `pdf`
 
 Example: 
 
