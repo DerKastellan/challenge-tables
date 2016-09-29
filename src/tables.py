@@ -82,7 +82,7 @@ class ChallengeTable:
     def createRows(self):
         def convertLabel(label):
             if len(label) > 1:
-                return "{} - {}".format(label[0], label[1])
+                return "{} - {}".format(label[0], label[-1])
             else:
                 return str(label[0])
 
